@@ -1,6 +1,7 @@
 const pokemonList = document.getElementById("pokemonList");
 const loadMoreButton = document.getElementById("loadMoreButton");
 const loadDetailPokemon = document.querySelector(".pokemons");
+let teste = 0;
 const maxRecords = 151;
 const limit = 5;
 let offset = 0;
@@ -10,7 +11,7 @@ function loadPokemonItens(offset, limit) {
         const newHtml = pokemons
             .map(
                 (pokemon) => `
-            <a  href="#" onclick="${pokemon.number}">
+            <a  href="#" onclick="loadPokemonDetail(${pokemon.number}) ">
                 <li class="pokemon ${pokemon.type}">
                     <span class="number">#${pokemon.number}</span>
                     <span class="name">${pokemon.name}</span>
@@ -38,6 +39,105 @@ function loadPokemonItens(offset, limit) {
     });
 }
 
+const pokemonDetail = document.getElementById("pokemon-detalhes");
+const pokedex = document.getElementById("pokedex");
+
+function loadPokemonDetail(pokemon) {
+    let seed;
+
+    pokeApi.getPokemonSpecie(pokemon).then((response) => {
+        seed = response;
+    });
+
+    pokeApi.getPokemonDetail(pokemon).then((response) => {
+        if (!pokedex.hasAttribute("hidden")) {
+            pokedex.setAttribute("hidden", "true");
+
+            pokemonDetail.innerHTML = `
+            <section id="pokemon-detalhes" class="grass">
+            <section class="pokemon-top">
+                <header class="header-detalhes">
+                    <a href="index.html"
+                        ><i class="fa-solid fa-arrow-left"></i
+                    ></a>
+                    <i class="fa-regular fa-heart"></i>
+                </header>
+                <span class="name-detalhes">${response.name}</span>
+                <span class="number-detalhes">#${response.number}</span>
+                <ol class="types-detalhes">
+                ${
+                    response.types
+                        ? response.types
+                              .map(
+                                  (type) =>
+                                      `<li class="type-detalhe ${type}">${type}</li>`
+                              )
+                              .join("")
+                        : null
+                }
+                </ol>
+                <img
+                    src="${response.photo}"
+                    alt=""
+                    class="img-pokemon"
+                />
+            </section>
+            <section class="infos">
+                <nav>
+                    <ul class="menu">
+                        <li class="active">About</li>
+                        <li>Base Stats</li>
+                        <li>Evolution</li>
+                        <li>Movies</li>
+                    </ul>
+                </nav>
+    
+                <table>
+                    <tr>
+                        <td class="title">Species</td>
+                        <td class="item">${seed}</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Heigh</td>
+                        <td class="item"></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Weight</td>
+                        <td class="item"></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Abilities</td>
+                        <td class="item">}</td>
+                    </tr>
+                    <th>Breeding</th>
+                    <tr>
+                        <td class="title">Gender</td>
+                        <td class="item genero">
+                            <span class="masculino"
+                                ><i class="fa-solid fa-mars-stroke"></i
+                                >Masculino</span
+                            >
+                            <span class="feminino"
+                                ><i class="fa-solid fa-venus"></i>Feminino</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Egg Groups</td>
+                        <td class="item">Monster</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Egg Cycle</td>
+                        <td class="item">Grass</td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+            `;
+        }
+    });
+}
+
 loadPokemonItens(offset, limit);
 
 loadMoreButton.addEventListener("click", () => {
@@ -55,5 +155,4 @@ loadMoreButton.addEventListener("click", () => {
 
 loadDetailPokemon.addEventListener("click", () => {
     loadDetailPokemon.classList.add("display-none");
-    
 });

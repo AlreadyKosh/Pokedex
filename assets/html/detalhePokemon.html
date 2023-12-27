@@ -21,64 +21,86 @@
         />
         <!--CSS NATIVO-->
         <link rel="stylesheet" href="../css/pokedex.css" />
+        <link rel="stylesheet" href="../css/detalhePokemon.css" />
         <link rel="stylesheet" href="../css/global.css" />
     </head>
-    <body class="grass">
-        <header>
-            <span>Voltar</span>
-            <span>Coração</span>
-        </header>
-        <section class="pokemon">
-            <span class="number">001</span>
-            <span class="name">Charmander </span>
-            <div class="detail">
-                <ol class="types">
-                    <li class="type">Grama</li>
-                    <li class="type">Grama</li>
+
+    <body>
+        <div id="pokedex"></div>
+        <section id="pokemon-detalhes" class="grass">
+            <section class="pokemon-top">
+                <header class="header-detalhes">
+                    <a href="index.html"
+                        ><i class="fa-solid fa-arrow-left"></i
+                    ></a>
+                    <i class="fa-regular fa-heart"></i>
+                </header>
+                <span class="name-detalhes">Charmander </span>
+                <span class="number-detalhes">#001</span>
+                <ol class="types-detalhes">
+                    <li class="type-detalhe grass">grass</li>
+                    <li class="type-detalhe grass">Grama</li>
                 </ol>
-                <img src="" alt="" />
-            </div>
+                <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                    alt=""
+                    class="img-pokemon"
+                />
+            </section>
+            <section class="infos">
+                <nav>
+                    <ul class="menu">
+                        <li class="active">About</li>
+                        <li>Base Stats</li>
+                        <li>Evolution</li>
+                        <li>Movies</li>
+                    </ul>
+                </nav>
+
+                <table>
+                    <tr>
+                        <td class="title">Species</td>
+                        <td class="item">Teste</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Heigh</td>
+                        <td class="item">Teste</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Weight</td>
+                        <td class="item">Teste</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Abilities</td>
+                        <td class="item">Teste</td>
+                    </tr>
+                    <th>Breeding</th>
+                    <tr>
+                        <td class="title">Gender</td>
+                        <td class="item genero">
+                            <span class="masculino"
+                                ><i class="fa-solid fa-mars-stroke"></i
+                                >Masculino</span
+                            >
+                            <span class="feminino"
+                                ><i class="fa-solid fa-venus"></i>Feminino</span
+                            >
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="title">Egg Groups</td>
+                        <td class="item">Monster</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Egg Cycle</td>
+                        <td class="item">Grass</td>
+                    </tr>
+                </table>
+            </section>
         </section>
-        <section class="infos">
-            <ol>
-                <li>About</li>
-                <li>Base Stats</li>
-                <li>Evolution</li>
-                <li>Movies</li>
-            </ol>
-            <table>
-                <th>Infos</th>
-                <tr>
-                    <td>Species</td>
-                    <td>Teste</td>
-                </tr>
-                <tr>
-                    <td>Heigh</td>
-                    <td>Teste</td>
-                </tr>
-                <tr>
-                    <td>Weight</td>
-                    <td>Teste</td>
-                </tr>
-                <tr>
-                    <td>Abilities</td>
-                    <td>Teste</td>
-                </tr>
-                <th>Breeding</th>
-                <tr>
-                    <td>Gender</td>
-                    <td>Masculino</td>
-                    <td>Feminino</td>
-                </tr>
-                <tr>
-                    <td>Egg Groups</td>
-                    <td>Monster</td>
-                </tr>
-                <tr>
-                    <td>Egg Cycle</td>
-                    <td>Grass</td>
-                </tr>
-            </table>
-        </section>
+        <script
+            src="https://kit.fontawesome.com/1a5eaf85ef.js"
+            crossorigin="anonymous"
+        ></script>
     </body>
 </html>

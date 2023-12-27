@@ -1,6 +1,6 @@
 const pokeApi = {};
 
-function convertPokeApiDetailPokemons(pokeDetail) {
+async function convertPokeApiDetailPokemons(pokeDetail) {
     const pokemon = new Pokemon();
     pokemon.number = pokeDetail.id;
     pokemon.name = pokeDetail.name;
@@ -32,4 +32,20 @@ pokeApi.getPokemons = (offset = 0, limit = 5) => {
         .then((detailsRequests) => Promise.all(detailsRequests))
         .then((pokemonsDetails) => pokemonsDetails)
         .catch((error) => console.error(error));
+};
+
+pokeApi.getPokemonDetail = (pokemon) => {
+    const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+
+    return fetch(url)
+        .then((response) => response.json())
+        .then(convertPokeApiDetailPokemons);
+};
+
+pokeApi.getPokemonSpecie = (pokemon) => {
+    const url = `https://pokeapi.co/api/v2/pokemon-species/${pokemon}`;
+
+    return fetch(url)
+        .then((response) => response.json())
+        .then((genera) => genera.genera[7].genus);
 };
