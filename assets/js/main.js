@@ -99,15 +99,21 @@ function loadPokemonDetail(pokemon) {
                     </tr>
                     <tr>
                         <td class="title">Heigh</td>
-                        <td class="item"></td>
+                        <td class="item">${response.height / 10} cm</td>
                     </tr>
                     <tr>
                         <td class="title">Weight</td>
-                        <td class="item"></td>
+                        <td class="item">${response.weight / 10} Kg</td>
                     </tr>
                     <tr>
                         <td class="title">Abilities</td>
-                        <td class="item">}</td>
+                        <td class="item">${
+                            response.abilities
+                                ? response.abilities
+                                      .map((ability) => ability)
+                                      .join(", ")
+                                : null
+                        }</td>
                     </tr>
                     <th>Breeding</th>
                     <tr>
