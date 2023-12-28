@@ -1,4 +1,6 @@
 const pokeApi = {};
+const genero = {};
+const genderClass = document.getElementById("masculino");
 
 async function convertPokeApiDetailPokemons(pokeDetail) {
     const pokemon = new Pokemon();
@@ -33,8 +35,46 @@ async function convertPokemonsSpecies(pokeSpecies) {
     pokemon.species = pokeSpecies.genera[7].genus;
 
     const eggGroups = pokeSpecies.egg_groups.map((eggs) => eggs.name);
-
     pokemon.eggGroups = eggGroups;
+
+    const gender = pokeSpecies.gender_rate;
+
+    genero.pegaGenero = (genero) => {
+        if (genero == "masculino") {
+            if (gender == 1) {
+                pokemon.gender = "87,5%";
+            } else if (gender == 2) {
+                pokemon.gender = "75,0%";
+            } else if (gender == 4) {
+                pokemon.gender = "50,0%";
+            } else if (gender == 5) {
+                pokemon.gender = "0,0%";
+            } else if (gender == 6) {
+                pokemon.gender = "25,0%";
+            } else if (gender == 8) {
+                pokemon.gender = "0,0%";
+            } else if (gender == 0) {
+                pokemon.gender = "100,0%";
+            }
+        } else {
+            if (gender == 1) {
+                pokemon.gender = "12,5%";
+            } else if (gender == 2) {
+                pokemon.gender = "25,0%";
+            } else if (gender == 4) {
+                pokemon.gender = "50,0%";
+            } else if (gender == 5) {
+                pokemon.gender = "100,0%";
+            } else if (gender == 6) {
+                pokemon.gender = "75,0%";
+            } else if (gender == 8) {
+                pokemon.gender = "100,0%";
+            } else if (gender == 0) {
+                pokemon.gender = "0,0%";
+            }
+        }
+    };
+
     return pokemon;
 }
 

@@ -130,10 +130,13 @@ th {
 
 .masculino {
     color: #BCC2E8; 
-    padding-right: 5px;
+    padding-right: 25px;
 }
 
 .feminino {
     color: #EFB4CB; 
-    padding: 0 5px 0 10px;
+}
+
+.icone{
+    margin-right: 5px;
 }

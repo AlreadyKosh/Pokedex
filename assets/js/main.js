@@ -113,13 +113,19 @@ function loadPokemonDetail(pokemon) {
                     <th>Breeding</th>
                     <tr>
                         <td class="title">Gender</td>
-                        <td class="item genero">
+                        <td id="genero" class="item genero">
                             <span class="masculino"
-                                ><i class="fa-solid fa-mars-stroke"></i
-                                >Masculino</span
+                                ><i class="fa-solid fa-mars-stroke icone"></i
+                                >${
+                                    (genero.pegaGenero("masculino"),
+                                    species.gender)
+                                }</span
                             >
                             <span class="feminino"
-                                ><i class="fa-solid fa-venus"></i>Feminino</span
+                                ><i class="fa-solid fa-venus icone"></i>${
+                                    (genero.pegaGenero("feminino"),
+                                    species.gender)
+                                }</span
                             >
                         </td>
                     </tr>
