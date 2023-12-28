@@ -43,17 +43,12 @@ const pokemonDetail = document.getElementById("pokemon-detalhes");
 const pokedex = document.getElementById("pokedex");
 
 function loadPokemonDetail(pokemon) {
-    let seed;
-
-    pokeApi.getPokemonSpecie(pokemon).then((response) => {
-        seed = response;
-    });
-
     pokeApi.getPokemonDetail(pokemon).then((response) => {
-        if (!pokedex.hasAttribute("hidden")) {
-            pokedex.setAttribute("hidden", "true");
+        pokeApi.getPokemonSpecie(pokemon).then((species) => {
+            if (!pokedex.hasAttribute("hidden")) {
+                pokedex.setAttribute("hidden", "true");
 
-            pokemonDetail.innerHTML = `
+                pokemonDetail.innerHTML = `
             <section id="pokemon-detalhes" class="grass">
             <section class="pokemon-top">
                 <header class="header-detalhes">
@@ -95,7 +90,7 @@ function loadPokemonDetail(pokemon) {
                 <table>
                     <tr>
                         <td class="title">Species</td>
-                        <td class="item">${seed}</td>
+                        <td class="item">${species.species}</td>
                     </tr>
                     <tr>
                         <td class="title">Heigh</td>
@@ -130,17 +125,20 @@ function loadPokemonDetail(pokemon) {
                     </tr>
                     <tr>
                         <td class="title">Egg Groups</td>
-                        <td class="item">Monster</td>
-                    </tr>
-                    <tr>
-                        <td class="title">Egg Cycle</td>
-                        <td class="item">Grass</td>
+                        <td class="item">${
+                            species.eggGroups
+                                ? species.eggGroups
+                                      .map((eggs) => eggs)
+                                      .join(", ")
+                                : null
+                        }</td>
                     </tr>
                 </table>
             </section>
         </section>
             `;
-        }
+            }
+        });
     });
 }
 

@@ -28,6 +28,16 @@ async function convertPokeApiDetailPokemons(pokeDetail) {
     return pokemon;
 }
 
+async function convertPokemonsSpecies(pokeSpecies) {
+    const pokemon = new PokemonSpecie();
+    pokemon.species = pokeSpecies.genera[7].genus;
+
+    const eggGroups = pokeSpecies.egg_groups.map((eggs) => eggs.name);
+
+    pokemon.eggGroups = eggGroups;
+    return pokemon;
+}
+
 pokeApi.getPokemonsDetail = (pokemon) => {
     return fetch(pokemon.url)
         .then((response) => response.json())
@@ -59,5 +69,5 @@ pokeApi.getPokemonSpecie = (pokemon) => {
 
     return fetch(url)
         .then((response) => response.json())
-        .then((genera) => genera.genera[7].genus);
+        .then(convertPokemonsSpecies);
 };
