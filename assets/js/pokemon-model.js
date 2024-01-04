@@ -13,5 +13,6 @@ class Pokemon {
 class PokemonSpecie {
     species;
     gender;
+    agenero;
     eggGroups = [];
 }

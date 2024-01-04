@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Detalhe Pokemon</title>
+        <!--NORMALIZE CSS-->
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+            integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <!--FONT ROBOTO-->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <!--CSS NATIVO-->
+        <link rel="stylesheet" href="../css/pokedex.css" />
+        <link rel="stylesheet" href="../css/detalhePokemon.css" />
+        <link rel="stylesheet" href="../css/statsPokemon.css" />
+
+        <link rel="stylesheet" href="../css/global.css" />
+    </head>
+
+    <body>
+        <div id="pokedex"></div>
+        <section id="pokemon-detalhes" class="grass">
+            <section class="pokemon-top">
+                <header class="header-detalhes">
+                    <a href="index.html"
+                        ><i class="fa-solid fa-arrow-left"></i
+                    ></a>
+                    <i class="fa-regular fa-heart"></i>
+                </header>
+                <span class="name-detalhes">Charmander </span>
+                <span class="number-detalhes">#001</span>
+                <ol class="types-detalhes">
+                    <li class="type-detalhe grass">grass</li>
+                    <li class="type-detalhe grass">Grama</li>
+                </ol>
+                <img
+                    src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+                    alt=""
+                    class="img-pokemon"
+                />
+            </section>
+            <section class="infos">
+                <nav>
+                    <ul class="menu">
+                        <li>About</li>
+                        <li class="active">Base Stats</li>
+                        <li>Evolution</li>
+                        <li>Movies</li>
+                    </ul>
+                </nav>
+
+                <table>
+                    <tr>
+                        <td class="title">HP</td>
+                        <td class="item">45</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Attack</td>
+                        <td class="item">33<span class="at"></span></td>
+                    </tr>
+                    <tr>
+                        <td class="title">Defense</td>
+                        <td class="item">44</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Sp. Atk</td>
+                        <td class="item">66</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Sp. Def</td>
+                        <td class="item">33</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Speed</td>
+                        <td class="item">34</td>
+                    </tr>
+                    <tr>
+                        <td class="title">Total</td>
+                        <td class="item">20</td>
+                    </tr>
+                    <th>Type Defense</th>
+                </table>
+            </section>
+        </section>
+        <script
+            src="https://kit.fontawesome.com/1a5eaf85ef.js"
+            crossorigin="anonymous"
+        ></script>
+    </body>
+</html>

@@ -1,8 +1,7 @@
 const pokeApi = {};
 const genero = {};
-const genderClass = document.getElementById("masculino");
 
-async function convertPokeApiDetailPokemons(pokeDetail) {
+function convertPokeApiDetailPokemons(pokeDetail) {
     const pokemon = new Pokemon();
     pokemon.number = pokeDetail.id;
     pokemon.name = pokeDetail.name;
@@ -30,7 +29,7 @@ async function convertPokeApiDetailPokemons(pokeDetail) {
     return pokemon;
 }
 
-async function convertPokemonsSpecies(pokeSpecies) {
+function convertPokemonsSpecies(pokeSpecies) {
     const pokemon = new PokemonSpecie();
     pokemon.species = pokeSpecies.genera[7].genus;
 
@@ -39,38 +38,46 @@ async function convertPokemonsSpecies(pokeSpecies) {
 
     const gender = pokeSpecies.gender_rate;
 
-    genero.pegaGenero = (genero) => {
-        if (genero == "masculino") {
-            if (gender == 1) {
-                pokemon.gender = "87,5%";
-            } else if (gender == 2) {
-                pokemon.gender = "75,0%";
-            } else if (gender == 4) {
-                pokemon.gender = "50,0%";
-            } else if (gender == 5) {
-                pokemon.gender = "0,0%";
-            } else if (gender == 6) {
-                pokemon.gender = "25,0%";
-            } else if (gender == 8) {
-                pokemon.gender = "0,0%";
-            } else if (gender == 0) {
-                pokemon.gender = "100,0%";
-            }
+    genero.pegaGenero = (generoM, generoF) => {
+        let variavelG;
+        if (gender == -1) {
+            pokemon.agenero = `<span>Genero Desconhecido</span>`;
         } else {
-            if (gender == 1) {
-                pokemon.gender = "12,5%";
-            } else if (gender == 2) {
-                pokemon.gender = "25,0%";
-            } else if (gender == 4) {
-                pokemon.gender = "50,0%";
-            } else if (gender == 5) {
-                pokemon.gender = "100,0%";
-            } else if (gender == 6) {
-                pokemon.gender = "75,0%";
-            } else if (gender == 8) {
-                pokemon.gender = "100,0%";
-            } else if (gender == 0) {
-                pokemon.gender = "0,0%";
+            if (generoM == "masculino") {
+                if (gender == 1) {
+                    variavelG = "87,5%";
+                } else if (gender == 2) {
+                    variavelG = "75,0%";
+                } else if (gender == 4) {
+                    variavelG = "50,0%";
+                } else if (gender == 5) {
+                    variavelG = "0,0%";
+                } else if (gender == 6) {
+                    variavelG = "25,0%";
+                } else if (gender == 8) {
+                    variavelG = "0,0%";
+                } else if (gender == 0) {
+                    variavelG = "100,0%";
+                }
+                pokemon.gender = `<span class="masculino"><i class="fa-solid fa-mars-stroke icone"></i>${variavelG}</span>`;
+            }
+            if ((generoF = "feminino")) {
+                if (gender == 1) {
+                    variavelG = "12,5%";
+                } else if (gender == 2) {
+                    variavelG = "25,0%";
+                } else if (gender == 4) {
+                    variavelG = "50,0%";
+                } else if (gender == 5) {
+                    variavelG = "100,0%";
+                } else if (gender == 6) {
+                    variavelG = "75,0%";
+                } else if (gender == 8) {
+                    variavelG = "100,0%";
+                } else if (gender == 0) {
+                    variavelG = "0,0%";
+                }
+                pokemon.gender += `<span class="feminino"><i class="fa-solid fa-venus icone"></i>${variavelG}</span>`;
             }
         }
     };
@@ -84,7 +91,7 @@ pokeApi.getPokemonsDetail = (pokemon) => {
         .then(convertPokeApiDetailPokemons);
 };
 
-pokeApi.getPokemons = (offset = 0, limit = 5) => {
+pokeApi.getPokemons = (offset = 0, limit = 8) => {
     const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`;
 
     return fetch(url)

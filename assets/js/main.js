@@ -3,7 +3,7 @@ const loadMoreButton = document.getElementById("loadMoreButton");
 const loadDetailPokemon = document.querySelector(".pokemons");
 let teste = 0;
 const maxRecords = 151;
-const limit = 5;
+const limit = 20;
 let offset = 0;
 
 function loadPokemonItens(offset, limit) {
@@ -94,7 +94,7 @@ function loadPokemonDetail(pokemon) {
                     </tr>
                     <tr>
                         <td class="title">Heigh</td>
-                        <td class="item">${response.height / 10} cm</td>
+                        <td class="item">${response.height / 10} m</td>
                     </tr>
                     <tr>
                         <td class="title">Weight</td>
@@ -113,20 +113,15 @@ function loadPokemonDetail(pokemon) {
                     <th>Breeding</th>
                     <tr>
                         <td class="title">Gender</td>
-                        <td id="genero" class="item genero">
-                            <span class="masculino"
-                                ><i class="fa-solid fa-mars-stroke icone"></i
-                                >${
-                                    (genero.pegaGenero("masculino"),
-                                    species.gender)
-                                }</span
-                            >
-                            <span class="feminino"
-                                ><i class="fa-solid fa-venus icone"></i>${
-                                    (genero.pegaGenero("feminino"),
-                                    species.gender)
-                                }</span
-                            >
+                        <td  class="item genero">
+                            ${
+                                (genero.pegaGenero("masculino", "feminino"),
+                                species.agenero
+                                    ? species.agenero
+                                    : species.gender)
+                            }
+                               
+                            
                         </td>
                     </tr>
                     <tr>
