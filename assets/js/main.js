@@ -50,7 +50,7 @@ function loadPokemonDetail(pokemon) {
                 pokemonDetail.removeAttribute("hidden");
 
                 pokemonDetail.innerHTML = `
-            <section id="pokemon-detalhes" class="grass">
+            <section id="pokemon-detalhes" class="${response.type}">
             <section class="pokemon-top">
                 <header class="header-detalhes">
                     <a href="index.html"
