@@ -47,6 +47,7 @@ function loadPokemonDetail(pokemon) {
         pokeApi.getPokemonSpecie(pokemon).then((species) => {
             if (!pokedex.hasAttribute("hidden")) {
                 pokedex.setAttribute("hidden", "true");
+                pokemonDetail.removeAttribute("hidden");
 
                 pokemonDetail.innerHTML = `
             <section id="pokemon-detalhes" class="grass">

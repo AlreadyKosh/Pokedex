@@ -6,11 +6,7 @@
 
 /*PARTE DE CIMA*/
 
-#pokemon-detalhes {
-    height: 100vh;
-    padding: 0;
-    margin: 0;
-}
+
 
 .header-detalhes {
     display: flex;
@@ -66,13 +62,12 @@
 
 .img-pokemon {
     max-width: 100%;
-    height: 220px;
+    height: 70%;
 }
 
 
 /*PARTE DE BAIXO*/
 .infos {
-  
     padding-top: 40px;
     height: 62%;
     background-color: #FFF;
@@ -105,7 +100,9 @@ li {
 }
 
 table {
-    margin: 0 35px;
+    display: flex;
+    justify-content: center;
+    margin: 15px;
     line-height: 2;
 }
 
@@ -141,3 +138,9 @@ th {
     margin-right: 5px;
 }
 
+@media screen and (min-width:992px){
+
+    .infos{
+        border-radius: 1rem;
+    }
+}
